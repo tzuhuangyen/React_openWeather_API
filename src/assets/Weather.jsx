@@ -144,46 +144,47 @@ const Weather = () => {
   return (
     <>
       <div className='card'>
-        <div>
+        <div className='searchInputBnt'>
           <input
             type='text'
             value={city}
             onChange={(e) => setCity(e.target.value)}
             onKeyUp={handleKeyUp}
             placeholder='Enter city'
+            className='inputCity'
           />
           <button onClick={handleSearch}>Search</button>
-          {weatherData && (
-            <div className='weather'>
-              <div className='city'>Weather in {weatherData.name}</div>
-              <div className='country'>{weatherData.sys.country}</div>
-              <img
-                className='icon'
-                src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
-                alt={weatherData.weather[0].description}
-              />
-              <div className='description'>
-                {weatherData.weather[0].description}
-              </div>
-              <div className='temp'>{weatherData.main.temp.toFixed(1)}°C</div>
-              <div className='temp-max'>
-                Max Temp: {weatherData.main.temp_max.toFixed(1)}°C
-              </div>
-              <div className='temp-min'>
-                Min Temp: {weatherData.main.temp_min.toFixed(1)}°C
-              </div>
-              <div className='humidity'>
-                Humidity: {weatherData.main.humidity}%
-              </div>
-              <div className='time'>
-                Local time:{' '}
-                {new Date(
-                  (weatherData.dt + weatherData.timezone) * 1000
-                ).toLocaleTimeString()}
-              </div>
-            </div>
-          )}
         </div>
+        {weatherData && (
+          <div className='weather'>
+            <div className='city mt-4'>Weather in {weatherData.name}</div>
+            <div className='country'>{weatherData.sys.country}</div>
+            <img
+              className='icon'
+              src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
+              alt={weatherData.weather[0].description}
+            />
+            <div className='description'>
+              {weatherData.weather[0].description}
+            </div>
+            <div className='temp'>{weatherData.main.temp.toFixed(1)}°C</div>
+            <div className='temp-max'>
+              Max Temp: {weatherData.main.temp_max.toFixed(1)}°C
+            </div>
+            <div className='temp-min'>
+              Min Temp: {weatherData.main.temp_min.toFixed(1)}°C
+            </div>
+            <div className='humidity'>
+              Humidity: {weatherData.main.humidity}%
+            </div>
+            <div className='time'>
+              Local time:{' '}
+              {new Date(
+                (weatherData.dt + weatherData.timezone) * 1000
+              ).toLocaleTimeString()}
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
